@@ -1,12 +1,15 @@
 import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { RolesGuard } from 'src/auth/roles.guard';
+import { Roles } from 'src/auth/roles.decorator';
 
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles('admin')
 @Controller('users')
 export class UsersController {
   constructor(private service: UsersService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.service.findAll();

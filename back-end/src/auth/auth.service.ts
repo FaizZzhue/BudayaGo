@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from '../users/user.entity';
+import { User, UserRole } from '../users/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -13,8 +13,8 @@ export class AuthService {
     private userRepo: Repository<User>,
   ) {}
 
-  async register(data: { email: string; password: string; confirm_password: string;}) {
-    const { email, password, confirm_password} = data;
+  async register(data: { email: string; password: string; confirm_password: string; role?: UserRole }) {
+    const { email, password, confirm_password, role = 'user' as UserRole } = data;
 
     if (password !== confirm_password) {
       throw new BadRequestException('Kata sandi tidak cocok');
@@ -24,7 +24,7 @@ export class AuthService {
     if (existingUser) throw new BadRequestException('Email sudah terdaftar');
 
     const hashed = await bcrypt.hash(password, 10);
-    const user = this.userRepo.create({ email: email, password: hashed});
+    const user = this.userRepo.create({ email, password: hashed, role });
     await this.userRepo.save(user);
 
     return { message: 'Registrasi berhasil' };
@@ -37,7 +37,20 @@ export class AuthService {
     const valid = await bcrypt.compare(data.password, user.password);
     if (!valid) throw new UnauthorizedException('Kata sandi salah');
 
-    const token = this.jwtService.sign({ id: user.id, email: user.email });
-    return { message: 'Login berhasil', token };
+    const token = this.jwtService.sign({
+      id: user.id,
+      email: user.email,
+      role: user.role,
+    });
+
+    return {
+      message: 'Login berhasil!',
+      token,
+      user: {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+      },
+    };
   }
 }
