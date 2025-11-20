@@ -6,8 +6,10 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export default function NavbarSection() {
+export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+
+    const LOGIN_PATH = "/auth/login";
 
     const navItems =[
         { name: 'Beranda', href: '/' },
@@ -19,7 +21,7 @@ export default function NavbarSection() {
         <nav className="fixed top-3 left-3 right-3 py-3 bg-[#5A2E0A] text-white rounded-xl z-50">
             <div className= "flex justify-between items-center w-full px-4 md:px-8">
                 <div className="font-bold">
-                    MyWebsite
+                    WastraNusa
                 </div>
 
                 {/* Desktop Menu */}
@@ -35,7 +37,7 @@ export default function NavbarSection() {
                     ))}
                 </div>
 
-                <Link href="/login">
+                <Link href={LOGIN_PATH}>
                     <Button className="hidden md:flex bg-[#E9D2A0] text-black font-bold">Masuk</Button>
                 </Link>
 
@@ -65,7 +67,7 @@ export default function NavbarSection() {
                                 {item.name}
                             </a>
                         ))}
-                        <Link href="/login">
+                        <Link href={LOGIN_PATH} onClick={() => setIsOpen(false)}>
                             <Button className="bg-[#E9D2A0] text-black font-bold">Masuk</Button>
                         </Link>
                     </div>

@@ -1,14 +1,14 @@
-import NavbarSection from "@/components/navbar-section";
-import HeroSection from "@/components/common/hero-section";
+import  Navbar  from "@/components/common/navbar";
 import Image from "next/image";
-import BatikSection from "../components/common/batik-section";
+import LandingPage from "./public/page";
+import Footer from "@/components/common/footer";
 
 export default function Home() {
   return (
       <main className="bg-[#F3E0B6]">
-        <NavbarSection />
-        <HeroSection />
-        <BatikSection />
+        <Navbar />
+        <LandingPage />
+        <Footer />
       </main>
   );
 }
