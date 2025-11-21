@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Search, SlidersHorizontal } from "lucide-react";
 import Image from "next/image";
 
@@ -33,9 +34,9 @@ export default function DuniaBatikSection() {
         <div className="w-full max-w-3xl">
           <div className="flex items-center rounded-full bg-[#f9e8c4] px-4 py-2 shadow-[0_12px_30px_rgba(0,0,0,0.35)]">
             {/* search icon kiri */}
-            <button className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#5b2a0a] text-[#fbe5c7]">
+            <Button className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#5b2a0a] text-[#fbe5c7]">
               <Search className="h-4 w-4" />
-            </button>
+            </Button>
 
             <input
               type="text"
@@ -44,9 +45,9 @@ export default function DuniaBatikSection() {
             />
 
             {/* filter icon kanan */}
-            <button className="ml-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#5b2a0a] text-[#fbe5c7]">
+            <Button className="ml-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#5b2a0a] text-[#fbe5c7]">
               <SlidersHorizontal className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
         </div>
 
