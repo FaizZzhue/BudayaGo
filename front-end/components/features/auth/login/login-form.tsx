@@ -20,7 +20,7 @@ export default function LoginPage() {
         setIsLoading(true)
 
         setTimeout(() => {
-            if (email === "test@gmail.com" && password === "123456") {
+            if (email === "test@gmail.com" && password === "123") {
                 setMessage("Login successful! Redirecting...")
                 setTimeout(() => {
                     router.push("/studio")
