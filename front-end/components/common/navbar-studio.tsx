@@ -7,7 +7,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-export default function NavbarDashboard() {
+export default function NavbarStudio() {
     const [isOpen, setIsOpen] = useState(false);
 
     const navItems =[

@@ -12,10 +12,24 @@ export default function Navbar() {
     const LOGIN_PATH = "/auth/login";
 
     const navItems =[
-        { name: 'Beranda', href: '/' },
-        { name: 'Makna', href: '/makna' },
-        { name: 'Tentang Kami', href: '/tentang-kami' },
+        { name: 'Beranda', href: '#hero-section' },
+        { name: 'Makna', href: '#motif-section' },
+        { name: 'Tentang Kami', href: '#footer-section' },
     ]
+
+    const handleAnchorClick = (
+        e: React.MouseEvent<HTMLAnchorElement>,
+        href: string
+        ) => {
+        if (href.startsWith("#")) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+            setIsOpen(false);
+        }
+    };
 
     return (
         <nav className="fixed top-3 left-3 right-3 py-3 bg-[#5A2E0A] text-white rounded-xl z-50">
@@ -30,6 +44,7 @@ export default function Navbar() {
                         <a 
                             key={key} 
                             href={item.href} 
+                            onClick={(e) => handleAnchorClick(e, item.href)}
                             className="hover:underline"
                         >
                             {item.name}
@@ -62,7 +77,7 @@ export default function Navbar() {
                                 key={key}
                                 href={item.href}
                                 className="text-black hover:text-primary transition-color duration-300"
-                                onClick={() => setIsOpen(false)}
+                                onClick={(e) => handleAnchorClick(e, item.href)}
                             >
                                 {item.name}
                             </a>

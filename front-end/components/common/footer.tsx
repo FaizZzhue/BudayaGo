@@ -1,12 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { Button } from "../ui/button";
+import { useState } from "react";
 
 export default function Footer() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const LOGIN_PATH = "/auth/login";
+
     return (
-        <footer className="w-full min-h-screen flex flex-col bg-[#e6c599] text-[#5b2a0a]">
+        <footer className="w-full min-h-screen flex flex-col text-[#5b2a0a]">
         {/* TOP: Story / Hero Footer */}
-            <section className="relative flex-1 px-4 py-16 md:py-20 flex items-center justify-center">
+            <section 
+                id="footer-section"
+                className="relative flex-1 px-4 py-16 md:py-20 flex items-center justify-center"
+            >
                 {/* Ornamen kiri & kanan (ganti path gambar sesuai asetmu) */}
                 <div className="pointer-events-none absolute inset-0">
                     <div className="absolute left-0 top-6 h-64 w-64 bg-[url('/images/footer/top-left-bird.png')] bg-contain bg-no-repeat bg-left-top" />
@@ -35,18 +44,20 @@ export default function Footer() {
                         budaya Indonesia. Kami percaya setiap motif punya cerita dan setiap
                         pengguna berhak menulis kisahnya sendiri melalui kain.
                     </p>
-
+                    
                     <Link
-                        href="/studio"
-                        className="mt-6 inline-flex items-center rounded-full bg-[#5b2a0a] px-6 py-2 text-sm font-semibold text-[#fbe5c7] shadow-[0_8px_18px_rgba(0,0,0,0.35)] transition-transform hover:translate-y-[1px] hover:bg-[#4a2107]"
+                        href={LOGIN_PATH} onClick={() => setIsOpen(false)}
                     >
-                        Ciptakan Sekarang
+                        <Button className="bg-[#5A2E0A]">
+                            Ciptakan Sekarang
+                        </Button>
                     </Link>
+                        
                 </div>
             </section>
 
         {/* STRIP MOTIF PEMBATAS */}
-            <div className="h-3 w-full bg-[url('/images/footer/footer-strip.svg')] bg-repeat-x bg-[length:80px_100%]" />
+            {/* <div className="h-3 w-full bg-[url('/images/footer/footer-strip.svg')] bg-repeat-x bg-[length:80px_100%]" /> */}
 
         {/* BOTTOM: Menu & Social */}
             <section className="relative bg-[#5A2E0A] text-[#FDF7EA]">
@@ -88,9 +99,9 @@ export default function Footer() {
                     </div>
 
                 {/* Ornamen tengah bawah */}
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center translate-y-1/2">
+                    {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center translate-y-1/2">
                         <div className="h-16 w-40 bg-[url('/images/footer/footer-ornament.svg')] bg-contain bg-center bg-no-repeat" />
-                    </div>
+                    </div> */}
                 </div>
             </section>
         </footer>

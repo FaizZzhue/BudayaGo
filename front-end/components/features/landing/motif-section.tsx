@@ -78,7 +78,10 @@ export function MotifShowcase() {
   };
 
   return (
-    <section className="w-full min-h-screen snap-start flex items-center">
+    <section 
+      id="motif-section"
+      className="w-full min-h-screen snap-start flex items-center"
+    >
 
       {/* wrapper isi di tengah */}
       <div className="relative mx-auto flex w-full max-w-6xl flex-col px-4 py-16 md:py-24">

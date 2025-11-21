@@ -7,10 +7,14 @@ export function HeroSection() {
   const LOGIN_PATH = "/auth/login";
 
   return (
-    <section className="w-full min-h-screen snap-start flex items-center">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-20 pt-16 md:flex-row md:items-center">
+    <section 
+      id="hero-section"
+      className="w-full min-h-screen snap-start flex items-center md:items-center"
+    >
+      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-12 pt-24 md:flex-row md:items-center">
+
         {/* Left: Text */}
-        <div className="flex-1 space-y-5">
+        <div className="w-full md:flex-1 space-y-5">
           <h1 className="text-3xl font-semibold leading-tight text-[#5b2a0a] md:text-[40px] md:leading-snug">
             Dari Warisan ke Tren — Batik Hidup Kembali Bersama Generasi Baru.
           </h1>
@@ -30,8 +34,8 @@ export function HeroSection() {
         </div>
 
         {/* Right: Image */}
-        <div className="flex-1 flex justify-end">
-          <div className="relative w-full max-w-[420px] overflow-hidden rounded-[52px] bg-[#f9e1bc] shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
+        <div className="w-full md:flex-1 flex justify-center md:justify-end">
+          <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-[420px] overflow-hidden rounded-[52px] bg-[#f9e1bc] shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
             <div className="aspect-[4/5] w-full bg-[url('/images/hero/batik-hero.jpg')] bg-cover bg-center" />
           </div>
         </div>

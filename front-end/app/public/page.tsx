@@ -10,7 +10,6 @@ export default function LandingPage() {
     <>
       <HeroSection />
       <MotifShowcase />
-      <BrandStorySection />
     </>
   );
 }

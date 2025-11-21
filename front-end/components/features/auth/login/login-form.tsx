@@ -36,7 +36,7 @@ export default function LoginPage() {
     return (
         <div className="min-h-screen flex flex-col bg-[#e6c599] text-[#3b2a1b]">
         {/* Top bar */}
-            <header className="w-full items-center px-6 py-2">
+            <div className="fixed top-3 left-3 z-50">
                 <Link
                     href="/"
                     className="inline-flex items-center gap-2 rounded-full border-2 border-[#f8e8c5] bg-[#fdf3d7] px-4 py-1 text-[13px] font-semibold text-[#6b3b1b] shadow-[0_2px_4px_rgba(0,0,0,0.2)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_4px_8px_rgba(0,0,0,0.25)]"
@@ -46,7 +46,7 @@ export default function LoginPage() {
                     </span>
                     <span>Kembali</span>
                 </Link>
-            </header>
+            </div>
 
         {/* Main content */}
             <main className="flex flex-1 items-center justify-center px-4 pb-10 pt-4">
