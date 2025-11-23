@@ -1,19 +1,19 @@
 import NavbarStudio from "@/components/common/navbar-studio";
 import GayaKamu from "@/components/features/studio/gaya-kamu-section";
-import DuniaBatikSection from "@/components/features/studio/dunia-batik-section";
-import PesanKaryaSection from "@/components/features/studio/pesan-karya-section";
 import Footer from "@/components/common/footer";
+import AlurWastraSection from "@/components/features/studio/alur-wastra-section";
+import { MotifShowcase } from "@/components/features/landing/motif-section";
 
 export default function StudioPage() {
     return (
-        <div className="min-h-screen bg-[#e6c599]">
+        <div className="min-h-screen bg-[#F3E0B6]">
             <NavbarStudio />
 
             <main className="pt-28 pb-16">
                 <GayaKamu />
             </main>
-            <DuniaBatikSection />
-            <PesanKaryaSection />
+            <AlurWastraSection />
+            <MotifShowcase />
             <Footer />
         </div>
     );

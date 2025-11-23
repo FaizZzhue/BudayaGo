@@ -56,7 +56,7 @@ export default function GayaKamu() {
     return (
         <section 
             className="mx-auto flex max-w-6xl flex-col items-center px-4"
-            id="gaya-kamu"
+            id="beranda"
         >
         {/* Strip pattern / placeholder */}
             <div className="mb-10 h-14 w-full rounded-[20px] bg-[rgba(139,87,42,0.15)]" />

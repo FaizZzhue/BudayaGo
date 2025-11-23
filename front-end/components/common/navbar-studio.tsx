@@ -11,6 +11,7 @@ export default function NavbarStudio() {
     const [isOpen, setIsOpen] = useState(false);
 
     const navItems =[
+        { name: 'Beranda', href: '#beranda' },
         { name: 'Gaya Kamu', href: '#gaya-kamu' },
         { name: 'Dunia Batik', href: '#dunia-batik' },
         { name: 'Pesan Karya', href: '#pesan-karya' },
@@ -50,10 +51,6 @@ export default function NavbarStudio() {
                         </a>
                     ))}
                 </div>
-
-                {/* <Link href={LOGIN_PATH}>
-                    <Button className="hidden md:flex bg-[#E9D2A0] text-black font-bold">Masuk</Button>
-                </Link> */}
 
                 <Avatar>
                     <AvatarImage src="https://github.com/evilrabbit.png" />
