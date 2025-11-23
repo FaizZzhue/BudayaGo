@@ -34,12 +34,25 @@ const talents: Talent[] = [
     rating: 5,
     image: "/images/talents/jatmiko-wicaksana.jpg",
   },
-  // contoh konveksi (opsional, konten bisa kamu ganti)
   {
     id: 4,
-    name: "Konveksi Sinar Nusantara",
+    name: "Konveksi Sirna",
     role: "konveksi",
     rating: 4,
+    image: "/images/talents/konveksi-1.jpg",
+  },
+  {
+    id: 5,
+    name: "Raja Konveksi",
+    role: "konveksi",
+    rating: 3,
+    image: "/images/talents/konveksi-1.jpg",
+  },
+  {
+    id: 6,
+    name: "Kar.ya Konveksi",
+    role: "konveksi",
+    rating: 5,
     image: "/images/talents/konveksi-1.jpg",
   },
 ];

@@ -3,44 +3,61 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useRef } from "react";
 
-type Product = {
-    id: string;
-    name: string;
-    description: string;
-    cta: string;
-};
 
-const products: Product[] = [
-    {
-        id: "kain-batik",
-        name: "Kain Batik",
-        description: "Cocok untuk pakaian dan dekorasi",
-        cta: "Gunakan Design",
-    },
-    {
-        id: "kaos-batik",
-        name: "Kaos batik",
-        description: "Gaya kasual dengan motif budaya",
-        cta: "Gunakan Design",
-    },
-    {
-        id: "tote-bag",
-        name: "Tote Bag",
-        description: "Temani aktivitasmu dengan gaya lokal",
-        cta: "Gunakan Design",
-    },
-    {
-        id: "kemeja",
-        name: "kemeja",
-        description: "Teman elegan dengan batik kontemporer",
-        cta: "Gunakan Design",
-    },
-];
 
-export default function ProductSelectionSection() {
+export default function GayaKamu() {
+
+    type Product = {
+        id: string;
+        name: string;
+        description: string;
+        cta: string;
+    };
+
+    const products: Product[] = [
+        {
+            id: "kain-batik",
+            name: "Kain Batik",
+            description: "Cocok untuk pakaian dan dekorasi",
+            cta: "Gunakan Design",
+        },
+        {
+            id: "kaos-batik",
+            name: "Kaos batik",
+            description: "Gaya kasual dengan motif budaya",
+            cta: "Gunakan Design",
+        },
+        {
+            id: "tote-bag",
+            name: "Tote Bag",
+            description: "Temani aktivitasmu dengan gaya lokal",
+            cta: "Gunakan Design",
+        },
+        {
+            id: "kemeja",
+            name: "kemeja",
+            description: "Teman elegan dengan batik kontemporer",
+            cta: "Gunakan Design",
+        },
+    ];
+
+    const router = useRouter();
+    const gridRef = useRef<HTMLDivElement>(null);
+    const handleScrollToGrid = () => {
+        gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    const handleUseDesign = (productId: string) => {
+        router.push(`/desain/${productId}`);
+    };
     return (
-        <section className="mx-auto flex max-w-6xl flex-col items-center px-4">
+        <section 
+            className="mx-auto flex max-w-6xl flex-col items-center px-4"
+            id="gaya-kamu"
+        >
         {/* Strip pattern / placeholder */}
             <div className="mb-10 h-14 w-full rounded-[20px] bg-[rgba(139,87,42,0.15)]" />
 
@@ -96,7 +113,10 @@ export default function ProductSelectionSection() {
                         {product.description}
                     </p>
 
-                    <Button className="mt-4 w-full rounded-full bg-[#5b2a0a] px-4 py-2 text-xs font-semibold text-[#fbe5c7] hover:bg-[#4a2107]">
+                    <Button 
+                        onClick={() => handleUseDesign(product.id)}
+                        className="mt-4 w-full rounded-full bg-[#5b2a0a] px-4 py-2 text-xs font-semibold text-[#fbe5c7] hover:bg-[#4a2107]"
+                    >
                         {product.cta}
                     </Button>
                 </motion.article>

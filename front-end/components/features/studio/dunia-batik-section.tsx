@@ -13,10 +13,9 @@ const duniaBatikItems = [
 
 export default function DuniaBatikSection() {
   return (
-    // id="gaya-kamu" -> supaya navbar bisa scroll ke sini
     <section
-      id="gaya-kamu"
       className="w-full min-h-screen flex items-center"
+      id="dunia-batik"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-4 py-16 md:py-20 gap-10">
         {/* Heading */}
