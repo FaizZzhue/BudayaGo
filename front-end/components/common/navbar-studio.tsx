@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
+import Link from "next/link";   
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
@@ -11,11 +11,11 @@ export default function NavbarStudio() {
     const [isOpen, setIsOpen] = useState(false);
 
     const navItems =[
-        { name: 'Beranda', href: '#beranda' },
-        { name: 'Gaya Kamu', href: '#gaya-kamu' },
-        { name: 'Dunia Batik', href: '#dunia-batik' },
-        { name: 'Pesan Karya', href: '#pesan-karya' },
-        { name: 'Tentang Kami', href: '#footer-section' },
+        { name: 'Beranda', href: '/beranda' },
+        { name: 'Gaya Kamu', href: '/gaya-kamu' },
+        { name: 'Dunia Batik', href: '/dunia-batik' },
+        { name: 'Pesan Karya', href: '/pesan-karya' },
+        { name: 'Tentang Kami', href: '/footer-section' },
     ]
 
     const handleAnchorClick = (

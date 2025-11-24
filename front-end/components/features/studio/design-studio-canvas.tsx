@@ -247,7 +247,7 @@ export function DesignStudioCanvas() {
                             <div className="pointer-events-none z-10 text-center text-[11px] text-[#8a5a2a]">
                                 <p>Seret dan lepas gambar di sini</p>
                                 <p className="mt-1 text-[10px] opacity-70">
-                                    atau klik untuk unggah
+                                    atau klik untuk unggah   
                                 </p>
                             </div>
                         </div>
