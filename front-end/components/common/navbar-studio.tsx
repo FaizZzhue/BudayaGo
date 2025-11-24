@@ -6,30 +6,49 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";   
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { usePathname, useRouter } from "next/navigation";
 
 export default function NavbarStudio() {
+    type NavItem = {
+        name: string;
+        href: string;
+        type: "home" | "page" | "anchor";
+};
+
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
+    const router = useRouter();
 
-    const navItems =[
-        { name: 'Beranda', href: '/beranda' },
-        { name: 'Gaya Kamu', href: '/gaya-kamu' },
-        { name: 'Dunia Batik', href: '/dunia-batik' },
-        { name: 'Pesan Karya', href: '/pesan-karya' },
-        { name: 'Tentang Kami', href: '/footer-section' },
-    ]
+    const navItems: NavItem[] = [
+        { name: "Beranda", href: "/studio", type: "home" },
+        { name: "Gaya Kamu", href: "/studio/gaya-kamu", type: "page" },
+        { name: "Dunia Batik", href: "/studio/dunia-batik", type: "page" },
+        { name: "Pesan Karya", href: "/studio/pesan-karya", type: "page" },
+        { name: "Tentang Kami", href: "#footer-section", type: "anchor" },
+    ];
 
-    const handleAnchorClick = (
-        e: React.MouseEvent<HTMLAnchorElement>,
-        href: string
-        ) => {
-        if (href.startsWith("#")) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-            setIsOpen(false);
+    const handleHomeClick = () => {
+        if (pathname === "/studio") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+            router.push("/studio");
         }
+        setIsOpen(false);
+    };
+
+    const handleAnchorClick = (hash: string) => {
+        if (pathname === "/studio") {
+            const target = document.querySelector(hash);
+            if (target) {
+                (target as HTMLElement).scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            }
+        } else {
+            router.push(`/studio${hash}`);
+        }
+        setIsOpen(false);
     };
 
     return (
@@ -41,15 +60,41 @@ export default function NavbarStudio() {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex gap-8 items-center">
-                    {navItems.map((item, key) => (
-                        <a 
-                            key={key} 
-                            href={item.href} 
-                            className="hover:underline"
-                        >
-                            {item.name}
-                        </a>
-                    ))}
+                    {navItems.map((item, key) => {
+                        if (item.type === "home") {
+                            return (
+                                <button
+                                    key={item.name}
+                                    type="button"
+                                    onClick={handleHomeClick}
+                                    className="hover:underline"
+                                >
+                                    {item.name}
+                                </button>
+                            );
+                        }
+                        if (item.type === "anchor") {
+                            return (
+                                <button
+                                    key={item.name}
+                                    type="button"
+                                    onClick={() => handleAnchorClick(item.href)}
+                                    className="hover:underline"
+                                >
+                                    {item.name}
+                                </button>
+                            );
+                        }
+                        return (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                className="hover:underline"
+                            >
+                                {item.name}
+                            </Link>
+                        );
+                    })}
                 </div>
 
                 <Avatar>
@@ -73,19 +118,44 @@ export default function NavbarStudio() {
                     : "opacity-0 pointer-events-none"
                 )}>
                     <div className="absolute top-16 flex flex-col space-y-8 text-xl">
-                        {navItems.map((item, key) => (
-                            <a
-                                key={key}
-                                href={item.href}
-                                className="text-black hover:text-primary transition-color duration-300"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                {item.name}
-                            </a>
-                        ))}
-                        {/* <Link href={LOGIN_PATH} onClick={() => setIsOpen(false)}>
-                            <Button className="bg-[#E9D2A0] text-black font-bold">Masuk</Button>
-                        </Link> */}
+                        {navItems.map((item, key) => {
+                            if (item.type === "home") {
+                                return (
+                                    <button
+                                        key={item.name}
+                                        type="button"
+                                        onClick={handleHomeClick}
+                                        className="text-black hover:text-primary transition-colors duration-300"
+                                    >
+                                        {item.name}
+                                    </button>
+                                );
+                            }
+
+                            if (item.type === "anchor") {
+                                return (
+                                    <button
+                                        key={item.name}
+                                        type="button"
+                                        onClick={() => handleAnchorClick(item.href)}
+                                        className="text-black hover:text-primary transition-colors duration-300"
+                                    >
+                                        {item.name}
+                                    </button>
+                                );
+                            }
+
+                            return (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="text-black hover:text-primary transition-colors duration-300"
+                                >
+                                    {item.name}
+                                </Link>
+                            );
+                        })}
                         <Avatar>
                             <AvatarImage src="https://github.com/evilrabbit.png" />
                             <AvatarFallback>CN</AvatarFallback>

@@ -1,6 +1,6 @@
+import Footer from "@/components/common/footer";
 import NavbarStudio from "@/components/common/navbar-studio";
 import PesanKaryaSection from "@/components/features/studio/pesan-karya-section";
-import Footer from "@/components/common/footer";
 
 export default function StudioPage() {
     return (
