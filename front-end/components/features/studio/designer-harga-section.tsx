@@ -41,7 +41,7 @@ export function DesignerPricingSection() {
         },
 ];
     return (
-        <section className="w-full bg-[#b18b66] py-10">
+        <section className="w-full min-h-screen bg-[#F3E0B6] px-4 py-10">
             <div className="mx-auto max-w-5xl rounded-[28px] bg-[#e1c29a] px-6 py-10 shadow-[0_18px_40px_rgba(0,0,0,0.4)]">
                 {/* area tekstur dalam */}
                 <div className="rounded-[24px] bg-[#e9cfa6] px-4 py-10 md:px-10">

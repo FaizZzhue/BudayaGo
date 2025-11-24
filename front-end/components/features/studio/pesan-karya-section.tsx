@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Link from "next/dist/client/link";
+import { useRouter } from "next/dist/client/components/navigation";
 
 type Talent = {
   id: number;
@@ -68,6 +70,16 @@ export default function PesanKaryaSection() {
   );
 
   const filtered = talents.filter((t) => t.role === activeTab);
+
+  const router = useRouter();
+
+  const handleDetail = (talent: Talent) => {
+    if (talent.role === "designer") {
+      router.push(`/studio/talent/${talent.id}`);
+    } else {
+      router.push(`/studio/konveksi/${talent.id}`);
+    }
+  };
 
   return (
     <section
@@ -143,7 +155,10 @@ export default function PesanKaryaSection() {
                 </div>
 
                 {/* Button */}
-                <button className="mt-auto w-full rounded-full bg-[#5b2a0a] px-4 py-2 text-xs font-semibold text-[#fbe5c7] shadow-[0_6px_14px_rgba(0,0,0,0.35)] hover:bg-[#4a2107]">
+                <button
+                  onClick={() => handleDetail(talent)}
+                  className="mt-auto w-full rounded-full bg-[#5b2a0a] px-4 py-2 text-xs font-semibold text-[#fbe5c7] shadow-[0_6px_14px_rgba(0,0,0,0.35)] hover:bg-[#4a2107]"
+                >
                   Lihat Detail
                 </button>
               </article>

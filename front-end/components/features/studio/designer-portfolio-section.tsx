@@ -1,3 +1,4 @@
+// components/features/studio/designer-portfolio-section.tsx
 "use client";
 
 import Image from "next/image";
@@ -36,27 +37,37 @@ type Props = {
 
 export function DesignerPortfolioSection({ items = defaultItems }: Props) {
   return (
-    <section className="w-full bg-[#b18b66] py-8">
+    <section
+      className="
+        relative w-full min-h-screen bg-[#F3E0B6]
+        px-4 pb-12 pt-20 -mt-16
+      "
+    >
+      {/* container utama dengan background peta + ornamen pojok */}
       <div
         className="
           mx-auto max-w-5xl rounded-[28px] border border-[#8b6a4b]
-          bg-[#e1c29a] p-8 shadow-[0_18px_40px_rgba(0,0,0,0.4)]
-          relative overflow-hidden
+          bg-[#e1c29a] shadow-[0_18px_40px_rgba(0,0,0,0.45)]
+          overflow-hidden
+          relative
         "
       >
-        <div className="relative z-10 flex flex-col items-center gap-6 md:flex-row md:justify-center">
+        {/* kalau punya aset peta / pattern, tinggal aktifkan ini */}
+        {/* <div className="absolute inset-0 bg-[url('/images/bg-portfolio-map.png')] bg-cover bg-center opacity-70" /> */}
+
+        {/* isi kartu batik */}
+        <div className="relative z-10 flex flex-col items-center justify-center gap-6 px-8 py-16 md:flex-row md:gap-10">
           {items.map((item) => (
             <article
               key={item.id}
               className="
                 w-full max-w-xs rounded-[18px] border border-[#b9996c]
-                bg-[#f3e2b5] px-5 pt-5 pb-4
+                bg-[#f5e4cc] px-5 pb-4 pt-5
                 shadow-[0_10px_24px_rgba(0,0,0,0.35)]
-                flex flex-col items-center
+                text-center
               "
             >
-              {/* gambar motif */}
-              <div className="relative mb-4 h-48 w-full max-w-[220px] overflow-hidden rounded-[6px] bg-[#d8c3a1]">
+              <div className="relative mb-4 h-48 w-full overflow-hidden rounded-[8px] bg-[#d8c3a1]">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -66,13 +77,11 @@ export function DesignerPortfolioSection({ items = defaultItems }: Props) {
                 />
               </div>
 
-              {/* judul */}
-              <p className="mb-2 text-center text-sm font-semibold text-[#5b2a0a]">
+              <p className="mb-2 text-sm font-semibold text-[#5b2a0a]">
                 {item.title}
               </p>
 
-              {/* rating */}
-              <div className="flex items-center gap-1 text-xs">
+              <div className="flex items-center justify-center gap-1 text-xs">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <span
                     key={i}
